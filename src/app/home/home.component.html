@@ -1,0 +1,152 @@
+
+ <div nz-row nzJustify="space-between" class="export-section">
+  <div nz-col nzSpan="4" class="titre">Lot de compteurs</div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
+      <i class="fa-solid fa-upload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-add" (click)="addBtn()" >
+      <i nz-icon nzType="plus" nzTheme="outline"></i>
+    </button>
+  </div>
+</div>
+
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+
+<div class="search-section">
+<div nz-row>
+  <div nz-col nzFlex="1">N° du lot</div>
+  <div nz-col nzFlex="1">N° de compteur</div>
+  <div nz-col nzFlex="1">Année</div>
+  <div nz-col nzFlex="1">Service</div>
+  <div nz-col nzFlex="1">Marque</div>
+  <div nz-col nzFlex="1"></div>
+</div>
+
+<div nz-row>
+  <di nz-col nzFlex="1">
+    <input class="inputs" nz-input placeholder="" nzSize="default"  [(ngModel)]="numlot"/>
+  </di>
+  <div nz-col nzFlex="1">
+    <input  class="inputs" nz-input placeholder="" nzSize="default" [(ngModel)]="nbCmpt"/>
+  </div>
+  <div nz-col nzFlex="1">
+    <input  class="inputs" nz-input placeholder="" nzSize="default" type="number"  max="2023" min="2011" [(ngModel)]="annee"/>
+  </div>
+  <div nz-col nzFlex="1">
+
+    <nz-select [(ngModel)]="selectedService" >
+      <nz-option *ngFor="let s of listOfService" [nzValue]="s" [nzLabel] ="s"></nz-option>
+
+    </nz-select>
+  </div>
+  <div nz-col nzFlex="1">
+    <nz-select [(ngModel)]="selectedMarque">
+      <nz-option *ngFor="let m of listeOfMarque" [nzValue]="m" [nzLabel] ="m"></nz-option>
+
+    </nz-select>
+  </div>
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="btn-search" (click)="Search(numlot,nbCmpt,annee,selectedService,selectedMarque)">
+      <i nz-icon nzType="search"></i>
+    </button>
+  </div>
+
+</div>
+</div>
+
+<nz-table #sortTable  nzBordered [nzData]="listOfLot" nzTableLayout="fixed" id="lots-table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+        {{ column.title }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.nuM_LOT_APT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        <a class="toListCmpt" [routerLink]="['/listCmpt',data.iD_LOT_APT]">{{data.nuM_LOT_APT}}</a>
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.mrQ_LOT_APT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.mrQ_LOT_APT}}
+      </div>
+        </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.diA_LOT_APT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.diA_LOT_APT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.svC_LOT_APT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.svC_LOT_APT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.nB_CMP_LOT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.nB_CMP_LOT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.frN_LOT_APT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.frN_LOT_APT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.coD_MRC_LOT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.coD_MRC_LOT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.qtE_MRC_LOT" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.qtE_MRC_LOT}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit" class="text-center">
+          <button class="saveIcon"><i class="fa-solid fa-square-check" (click)="onSave(data)"></i></button>
+          <button class="editIcon"><i class="fa-solid fa-square-xmark" (click)="onCancel()"></i></button>
+        </div>
+        <div *ngIf="!data.isEdit">
+          <button class="editIcon"><i class="fa-solid fa-pen-to-square" (click)="onEdit(data)"></i></button>
+        </div>
+      </td>
+
+    </tr>
+  </tbody>
+</nz-table>
+
+
+

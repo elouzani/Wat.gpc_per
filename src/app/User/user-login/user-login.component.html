@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header text-center">
+        Login
+      </div>
+
+      <div class="card-body">
+        <form  [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="form-group col-12">
+            <label>email</label>
+            <input class="form-control" required type="email" formControlName="email">
+            <span *ngIf="!Email.valid && Email.touched" class="error-block">
+              <span *ngIf="Email.hasError('required')">
+                *Email is required
+              </span>
+              <span *ngIf="Email.hasError('email')">
+                *Email is invalid
+              </span>
+            </span>
+          </div>
+
+          <div class="form-group col-12">
+           <label>Mot de passe</label>
+           <input class="form-control" type="password" formControlName="password">
+         </div>
+         <span *ngIf="!Password.valid && Password.touched" class="error-block">
+          <span *ngIf="Password.hasError('required')">
+            *Password is required
+          </span>
+          <span *ngIf="Password.errors?.['minlength']">
+            *Password should not be lesser than 6 character
+          </span>
+        </span>
+
+
+          <div class="form-group col-6 offset-3">
+            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary col-12" style="margin-top: 20px;">Login</button>
+
+
+          </div>
+
+          <div class="row mt-2">
+            <div class="col">
+              <span class="me-2">Don't have account?</span> <a routerLink="/register">Register</a>
+            </div>
+          </div>
+        </form>
+       </div>
+
+
+
+
+    </div>
+  </div>
+</div>

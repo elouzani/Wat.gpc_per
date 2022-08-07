@@ -1,0 +1,67 @@
+.container{
+  margin-top: 40px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+span{
+  margin-top: 0px;
+}
+.select1{
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  padding-left: 261px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+.select2{
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  padding-left: 362px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+select{
+  margin-bottom: 10px;
+}
+.btn-add{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 1137px;
+  background-color: #3489cc;
+  color: #fff;
+  border: none;
+
+}
+.ant-btn:focus, .ant-btn:hover{
+  background-color: #0665ae;
+}
+.card{
+  margin-top: 20px;
+  border-radius: 0%;
+  padding-bottom: 100px;
+}
+.card-header i {
+  color: #a0afbc;
+  transition: 0.3s linear;
+}
+.card-header {
+  background-color: #d8e5eb;
+  border-bottom: 0;
+  padding: 12px 20px 8px 20px;
+  position: relative;
+  cursor: pointer;
+}
+.card-header p {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+}
+label, .k-filter-help-text, .form-control-label {
+  color: #6a757f;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  line-height: 1.2em;
+}
+

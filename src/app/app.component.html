@@ -1,0 +1,35 @@
+
+<nz-layout>
+  <nz-header>
+    <div class="logo">
+      <p>Wat.gpc</p>
+    </div>
+    <ul nz-menu nzMode="horizontal">
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['home']">Gestion des los</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['operations']">Opérations sur lot</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/', 'components', 'menu', 'zh']">Paramétrage</a>
+      </li>
+    </ul>
+
+  </nz-header>
+  <nz-content>
+
+
+
+
+    <div>
+
+
+
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </nz-content>
+  <nz-footer></nz-footer>
+</nz-layout>

@@ -1,0 +1,135 @@
+
+ <div nz-row nzJustify="space-between" class="export-section">
+  <div class="lotText" nz-col nzSpan="4">Lot de compteurs : {{NumLot}} </div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
+      <i class="fa-solid fa-upload"></i>
+    </button>
+  </div>
+ </div>
+
+<div class="operations">
+ <div  nz-row >
+
+  <div nz-col nzSpan="8" class="col1" >
+    <div class="card">
+      <div class="card-header card-header-text-color">
+        <p>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          Recherche
+        </p>
+      </div>
+
+      <div nz-row>
+        <div class="col121" nz-col nzSpan="12">N° Appareil</div>
+        <div class="col122" nz-col nzSpan="12"></div>
+      </div>
+
+      <div nz-row class="card1">
+        <div class="col121" nz-col nzSpan="12">
+          <input type="text" class="form-control" [(ngModel)]="numAppareil" />
+        </div>
+        <div class="col122" nz-col nzSpan="12">
+            <button nz-button nzType="default" class="btn-select" (click)="searchAppareil(numAppareil)" >
+              Sélectionner
+             </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div nz-col nzSpan="8">
+    <div class="card card2" >
+      <div class="card-header card-header-text-color">
+        <p>
+
+          Affectation
+        </p>
+      </div>
+
+      <div nz-row>
+        <div class="col121" nz-col nzSpan="12">N° de Lot</div>
+        <div class="col122" nz-col nzSpan="12"></div>
+      </div>
+
+      <div nz-row>
+        <div class="col121" nz-col nzSpan="12">
+          <nz-select class="selection" [(ngModel)]="selectedNumero" >
+            <nz-option *ngFor="let s of listNumLot" [nzValue]="s" [nzLabel] ="s"></nz-option>
+          </nz-select>
+        </div>
+        <div class="col122" nz-col nzSpan="12">
+            <button nz-button nzType="default" class="btn-affecter" (click)="affecter(selectedNumero)">
+              Affecter
+             </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div nz-col nzSpan="8">
+    <div class="card">
+      <div class="card-header card-header-text-color">
+        <p>
+          Déduction
+        </p>
+      </div>
+      <div nz-row>
+        <div class="col3" nz-col nzSpan="12">
+          <button nz-button nzType="default" class="btn-deduction">
+            Déduire Lot
+           </button>
+      </div>
+      <div class="col3" nz-col nzSpan="12">
+        <button nz-button nzType="default" class="btn-historique">
+        <p>Afficher Historique</p>
+          <p class="pev">Evénements</p>
+         </button>
+    </div>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+  </div>
+</div>
+<nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzData]="listOfAppareil"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzSelections]="listOfSelection"
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>N° Appareil</th>
+          <th>Diamétre</th>
+          <th>Etat Appareil</th>
+          <th>Date Pose</th>
+          <th>Date Dépose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.nuM_APT)" (nzCheckedChange)="onItemChecked(data.nuM_APT, $event)"></td>
+          <td>{{ data.nuM_PHY_APT}}</td>
+          <td>{{Diametre}}</td>
+          <td>{{ data.etA_APT}}</td>
+          <td>{{ data.daT_POS_APT}}</td>
+          <td>{{ data.daT_DEPO_APT}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+

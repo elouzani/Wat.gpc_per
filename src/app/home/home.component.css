@@ -1,0 +1,70 @@
+.export-section{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+nz-select{
+  width: 200px;
+}
+.inputs{
+  width: 200px;
+}
+.btn-search{
+  float: left;
+  width: 80px;
+}
+.search-section{
+  margin-bottom: 20px;
+  margin-left: 60px;
+}
+.btn-export{
+  float: right;
+  margin-right: -148px;
+}
+.save {
+  margin-right: 8px;
+}
+.editIcon{
+  margin-left: 50px;
+  border: none;
+
+}
+i.fa-solid.fa-pen-to-square{
+font-size: 25px;
+color:#3489cc;
+}
+i.fa-solid.fa-pen-to-square:focus, i.fa-solid.fa-pen-to-square:hover{
+  color: #0665ae;
+}
+i.fa-solid.fa-square-check{
+  font-size: 28px;
+  color:forestgreen;
+  border-radius: 2px;
+  margin-right: -12px;
+  margin-inline-end:-17px;
+
+}
+i.fa-solid.fa-square-check:focus,i.fa-solid.fa-square-check:hover{
+  color:rgb(31, 121, 31);
+}
+button.saveIcon{
+  border:none;
+}
+i.fa-solid.fa-square-xmark{
+  font-size: 28px;
+  color:rgb(222, 16, 16);
+  margin-left: -28px;
+}
+i.fa-solid.fa-square-xmark:focus,i.fa-solid.fa-square-xmark:hover{
+color:rgb(180, 30, 30);
+}
+a.toListCmpt{
+  color: #3489cc;
+    text-decoration: underline;
+}
+a.toListCmpt:hover,a.toListCmpt:focus{
+  text-decoration: none;
+}
+.titre{
+  font-size: 18px;
+  font-weight: 300;
+}

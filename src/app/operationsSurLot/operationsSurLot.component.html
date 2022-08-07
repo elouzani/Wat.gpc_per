@@ -1,0 +1,102 @@
+<div nz-row nzJustify="space-between" class="export-section">
+  <div nz-col nzSpan="4" class="titre">Opérations sur Lot</div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
+      <i class="fa-solid fa-upload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="4">
+
+  </div>
+</div>
+
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+
+<div class="search-section">
+<div nz-row>
+  <div nz-col nzFlex="1">N° du lot</div>
+  <div nz-col nzFlex="1">N° de compteur</div>
+  <div nz-col nzFlex="1">Année</div>
+  <div nz-col nzFlex="1">Service</div>
+  <div nz-col nzFlex="1">Marque</div>
+  <div nz-col nzFlex="1"></div>
+</div>
+
+<div nz-row>
+  <di nz-col nzFlex="1">
+    <input class="inputs" nz-input placeholder="" nzSize="default"  [(ngModel)]="numlot"/>
+  </di>
+  <div nz-col nzFlex="1">
+    <input  class="inputs" nz-input placeholder="" nzSize="default" [(ngModel)]="nbCmpt"/>
+  </div>
+  <div nz-col nzFlex="1">
+    <input  class="inputs" nz-input placeholder="" nzSize="default" type="number"  max="2023" min="2011" [(ngModel)]="annee"/>
+  </div>
+  <div nz-col nzFlex="1">
+
+    <nz-select [(ngModel)]="selectedService" >
+      <nz-option *ngFor="let s of listOfService" [nzValue]="s" [nzLabel] ="s"></nz-option>
+
+    </nz-select>
+  </div>
+  <div nz-col nzFlex="1">
+    <nz-select [(ngModel)]="selectedMarque">
+      <nz-option *ngFor="let m of listeOfMarque" [nzValue]="m" [nzLabel] ="m"></nz-option>
+
+    </nz-select>
+  </div>
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="btn-search" (click)="Search(numlot,nbCmpt,annee,selectedService,selectedMarque)">
+      <i nz-icon nzType="search"></i>
+    </button>
+  </div>
+
+</div>
+</div>
+
+<nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzData]="listOfLot"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzSelections]="listOfSelection"
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>N° du lot</th>
+          <th>Marque</th>
+          <th>Diamètre</th>
+          <th>Service</th>
+          <th>Nb Compteur</th>
+          <th>Fournisseur</th>
+          <th>Code Marche</th>
+          <th>Quantité Marche</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.iD_LOT_APT)" (nzCheckedChange)="onItemChecked(data.iD_LOT_APT, $event)"></td>
+          <td>{{data.nuM_LOT_APT}}</td>
+          <td>{{data.mrQ_LOT_APT}}</td>
+          <td>{{data.diA_LOT_APT}}</td>
+          <td>{{ data.svC_LOT_APT}}</td>
+          <td>{{data.nB_CMP_LOT}}</td>
+          <td>{{data.frN_LOT_APT}}</td>
+          <td>{{data.coD_MRC_LOT}}</td>
+          <td>{{data.qtE_MRC_LOT}}</td>
+
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+
+
+

@@ -1,0 +1,130 @@
+<section class="card">
+  <div class="card-header card-header-text-color">
+    <p>
+      <i ng-class="AppareilCtrl.isActive ? 'fa fa-chevron-down' : 'fa fa-chevron-right'" aria-hidden="true" class="fa fa-chevron-down"></i>
+      Informations générales de lot
+    </p>
+  </div>
+  <div class="container" >
+    <form [formGroup]="addForm" (ngSubmit)="onAddition()">
+  <div class="row addDiv">
+    <div class="col-lg-6 col-sm-12">
+      <div class="row">
+        <label class="form-control-label col-lg-3 col-sm-3 text-right">
+          Numréro de lot
+         </label>
+         <div class="col-lg-8 col-sm-8">
+          <input type="text" class="form-control text-right" formControlName="numLot" >
+          <span *ngIf="!numLot.valid && numLot.touched " class="error-block">
+            *Le champ est requis
+           </span>
+      </div>
+        </div>
+     <div class="row">
+      <label class="form-control-label col-lg-3 col-sm-3 text-right">
+        Marque
+      </label>
+      <div class="col-lg-8 col-sm-8">
+        <select class="select1"  class="form-control text-right" formControlName="marque" (change)="changeMarque($event)">
+          <option selected="selected"></option>
+          <option label="ALMA" >ALMA</option>
+          <option label="CHAABI" >CHAABI</option>
+          <option label="ITRON" >ITRON</option>
+          <option label="DIMATIT" >DIMATIT</option>
+          <option label="ZENNER" >ZENNER</option>
+          <option label="SENSUS">SENSUS</option>
+          <option label="SOCAM" >SOCAM</option>
+          <option label="VINCENT AQUADIS" >VINCENT AQUADIS</option>
+          <option label="BAYLAN" >BAYLAN</option>
+          <option label="XXXXX" >XXXXX</option>
+        </select>
+        <span *ngIf="!marque.valid && marque.touched " class="error-block">
+          * Veuillez renseigner le champ
+         </span>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="form-control-label col-lg-3 col-sm-3 text-right">
+      Diamétre
+     </label>
+     <div class="col-lg-8 col-sm-8">
+      <input type="text" class="form-control text-right"  formControlName="diametre" >
+      <span *ngIf="!diametre.valid && diametre.touched " class="error-block">
+        *Le champ est requis
+       </span>
+  </div>
+    </div>
+
+    <div class="row">
+      <label class="form-control-label col-lg-3 col-sm-3 text-right">
+        Service
+       </label>
+       <div class="col-lg-8 col-sm-8">
+        <select class="select2"  class="form-control text-right" formControlName="service" (change)="changeService($event)">
+          <option selected="selected"></option>
+          <option label="EA" >EA</option>
+        </select>
+        <span *ngIf="!service.valid && service.touched " class="error-block">
+          * Veuillez renseigner le champ
+         </span>
+
+    </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-lg-6 col-sm-12">
+      <div class="row">
+        <label class="form-control-label col-lg-3 col-sm-3 text-right">
+          NB Compteurs
+         </label>
+         <div class="col-lg-8 col-sm-8">
+          <input type="text" class="form-control text-right"  formControlName="nbCompteur" >
+          <span *ngIf="!nbCompteur.valid && nbCompteur.touched " class="error-block">
+            *Le champ est requis
+           </span>
+      </div>
+        </div>
+
+        <div class="row">
+          <label class="form-control-label col-lg-3 col-sm-3 text-right">
+            Fournisseur
+           </label>
+           <div class="col-lg-8 col-sm-8">
+            <input type="text" class="form-control text-right"  formControlName="fournisseur"  >
+        </div>
+          </div>
+
+          <div class="row">
+            <label class="form-control-label col-lg-3 col-sm-3 text-right">
+              Code Marché
+             </label>
+             <div class="col-lg-8 col-sm-8">
+              <input type="text" class="form-control text-right"  formControlName="code" >
+          </div>
+            </div>
+
+            <div class="row">
+              <label class="form-control-label col-lg-3 col-sm-3 text-right">
+                Quantité Marché
+               </label>
+               <div class="col-lg-8 col-sm-8">
+                <input type="text" class="form-control text-right"  formControlName="qnt" >
+            </div>
+              </div>
+    </div>
+  </div>
+  <div>
+    <button nz-button nzType="default" class="btn-add">
+     Ajouter lot
+    </button>
+  </div>
+</form>
+</div>
+
+
+</section>
+
