@@ -1,0 +1,22 @@
+
+.titre{
+  font-size: 18px;
+  font-weight: 300;
+}
+.Numero-section{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.btn-export{
+  float: right;
+  margin-right: -297px;
+}
+.button-section{
+  margin-bottom: 10px;
+}
+.btn-save{
+  margin-left: 140px;
+}
+.ant-divider-horizontal {
+  margin: 20px 0;
+}

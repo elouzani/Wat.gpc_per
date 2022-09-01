@@ -1,0 +1,106 @@
+<div nz-row nzJustify="space-between" class="export-section">
+  <div nz-col nzSpan="4" class="titre">Paramétrage</div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+
+  </div>
+
+  <div nz-col nzSpan="4">
+
+  </div>
+</div>
+
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+
+<div class="search-section">
+  <div nz-row>
+    <div nz-col nzFlex="1">Diamétre</div>
+    <div nz-col nzFlex="4"></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzFlex="1">
+      <input class="inputs" nz-input placeholder="" nzSize="default" [(ngModel)]="diametre" />
+    </div>
+    <div nz-col nzFlex="4">
+      <button nz-button nzType="primary" class="btn-search" (click)="searchDiametre(diametre)">
+        <i nz-icon nzType="search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<nz-table #sortTable  nzBordered [nzData]="listOfparametrages" nzTableLayout="fixed" id="parametrages-table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+        {{ column.title }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.diA_PAR" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.diA_PAR}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.liB_QET" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.liB_QET}}
+      </div>
+        </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data. vaL_QET" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data. vaL_QET}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data. vaL_MIN" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data. vaL_MIN}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.vaL_MAX" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.vaL_MAX}}
+      </div>
+      </td>
+      <td>
+        <div *ngIf="data.isEdit">
+          <input type="text" [(ngModel)]="data.vaL_BLC" class="form-control"/>
+        </div>
+        <div *ngIf="!data.isEdit">
+        {{data.vaL_BLC}}
+      </div>
+      </td>
+
+
+      <td>
+        <div *ngIf="data.isEdit" class="text-center" >
+          <button class="saveIcon"><i class="fa-solid fa-square-check" (click)="onSave(data)"></i></button>
+          <button class="editIcon"><i class="fa-solid fa-square-xmark" (click)="onCancel()"></i></button>
+        </div>
+        <div *ngIf="!data.isEdit" class="btn">
+          <button class="editIcon"><i class="fa-solid fa-pen-to-square" (click)="onEdit(data)"></i></button>
+        </div>
+      </td>
+
+    </tr>
+  </tbody>
+</nz-table>
+

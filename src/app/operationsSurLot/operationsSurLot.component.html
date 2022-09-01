@@ -1,14 +1,19 @@
 <div nz-row nzJustify="space-between" class="export-section">
-  <div nz-col nzSpan="4" class="titre">Opérations sur Lot</div>
-  <div nz-col nzSpan="4"></div>
-  <div nz-col nzSpan="4">
-    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
-      <i class="fa-solid fa-upload"></i>
-    </button>
+  <div nz-col nzFlex="1" class="titre">Opérations sur Lot</div>
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="etalonnage" (click)="etalonner()" >Etalonnage des Compteurs</button>
+  </div>
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="changement" (click)="changer()">Changement des Compteurs</button>
   </div>
 
-  <div nz-col nzSpan="4">
-
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="evenement" (click)="evenements()">Historique des Evénements </button>
+  </div>
+  <div nz-col nzFlex="1">
+    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
+      <i nzTooltipTitle="Exporter" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-upload"></i>
+    </button>
   </div>
 </div>
 

@@ -4,13 +4,13 @@
   <div nz-col nzSpan="4"></div>
   <div nz-col nzSpan="4">
     <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
-      <i class="fa-solid fa-upload"></i>
+      <i nzTooltipTitle="Exporter" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-upload"></i>
     </button>
   </div>
 
   <div nz-col nzSpan="4">
     <button nz-button nzType="primary" class="btn-add" (click)="addBtn()" >
-      <i nz-icon nzType="plus" nzTheme="outline"></i>
+      <i nzTooltipTitle="Nouveau" nzTooltipPlacement="top" nz-button nz-tooltip nz-icon nzType="plus" nzTheme="outline"></i>
     </button>
   </div>
 </div>
@@ -135,11 +135,11 @@
       </div>
       </td>
       <td>
-        <div *ngIf="data.isEdit" class="text-center">
+        <div *ngIf="data.isEdit" class="text-center" >
           <button class="saveIcon"><i class="fa-solid fa-square-check" (click)="onSave(data)"></i></button>
           <button class="editIcon"><i class="fa-solid fa-square-xmark" (click)="onCancel()"></i></button>
         </div>
-        <div *ngIf="!data.isEdit">
+        <div *ngIf="!data.isEdit" class="btn">
           <button class="editIcon"><i class="fa-solid fa-pen-to-square" (click)="onEdit(data)"></i></button>
         </div>
       </td>

@@ -5,6 +5,10 @@
   margin: -5px 0px -1px 0px;
   float: left;
 }
+img{
+  width: 97px;
+  height: 40px;
+}
 
 [nz-menu] {
   line-height: 64px;

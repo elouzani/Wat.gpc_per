@@ -7,5 +7,6 @@ export interface Appareil {
   daT_DEPO_APT:Date;
   etA_APT:string;
   lotCompteur:Lot;
+  perte_Apt: number;
 
 }

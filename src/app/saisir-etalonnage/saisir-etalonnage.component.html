@@ -1,0 +1,98 @@
+<div nz-row nzJustify="space-between" class="Numero-section">
+  <div nz-col nzSpan="4" class="titre">Numéro de Lot : {{numLot}} </div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4" class="titre">Numéro evenement : {{numEvenemt}} </div>
+</div>
+
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+
+<div nz-row nzJustify="space-between" class="button-section">
+  <div nz-col nzSpan="4" class="titre"></div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-export">
+      <i nzTooltipTitle="Exporter" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-upload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-save" (click)="enregistrer()">
+      <i nzTooltipTitle="enregistrer" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-floppy-disk"></i>
+    </button>
+  </div>
+</div>
+
+<nz-table #editRowTable nzBordered [nzData]="listOfInterventionResETL">
+  <thead>
+    <tr>
+      <th>N° intervention</th>
+      <th>Date Lancement</th>
+      <th>N° Compteur</th>
+      <th>Q1</th>
+      <th>Q2</th>
+      <th>Q3</th>
+      <th>Q4</th>
+      <th>Q5</th>
+      <th>Q6</th>
+      <th>Rendement</th>
+      <th>Etat Appareil</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data" class="editable-row">
+
+      <td>{{ data.num_inter }}</td>
+      <td>{{ data.date_execution }}</td>
+      <td>
+        {{data.nuM_PHY_APT}}
+      </td>
+
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+            {{data.resulta_etl.etL_Q1}}
+        </div>
+        <input [hidden]="editId !== data.num_inter" type="text" nz-input [(ngModel)]="Q1" (blur)="stopEdit()" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+          {{data.resulta_etl.etL_Q2}}
+        </div>
+        <input [hidden]="editId !== data.num_inter" type="text" nz-input [(ngModel)]="Q2" (blur)="stopEdit()" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+          {{data.resulta_etl.etL_Q3}}
+        </div>
+        <input [hidden]="editId !==data.num_inter" type="text" nz-input [(ngModel)]="Q3" (blur)="stopEdit()" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+          {{data.resulta_etl.etL_Q4}}
+        </div>
+        <input [hidden]="editId !== data.num_inter" type="text" nz-input [(ngModel)]="Q4" (blur)="stopEdit()" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+          {{data.resulta_etl.etL_Q5}}
+        </div>
+        <input [hidden]="editId !== data.num_inter" type="text" nz-input [(ngModel)]="Q5" (blur)="stopEdit()" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.num_inter" (click)="startEdit(data.num_inter)">
+          {{data.resulta_etl.etL_Q6}}
+        </div>
+        <input [hidden]="editId !== data.num_inter" type="text" nz-input [(ngModel)]="Q6" (blur)="stopEdit()" />
+      </td>
+      <td>
+        {{data.resulta_etl.rnD_CMPT}}
+      </td>
+      <td>
+        {{data.resulta_etl.etA_CMPT}}
+      </td>
+
+
+    </tr>
+  </tbody>
+</nz-table>

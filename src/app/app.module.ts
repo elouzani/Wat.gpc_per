@@ -11,6 +11,11 @@ import { AlertifyService } from './services/Alertify.service';
 import { AuthServiceService } from './services/AuthService.service';
 import { AddLotComponent } from './add-lot/add-lot.component';
 import { ListCompteursComponent } from './listCompteurs/listCompteurs.component';
+import { OperationsSurLotComponent } from './operationsSurLot/operationsSurLot.component';
+import { EtalonnageComponent } from './etalonnage/etalonnage.component';
+import { EvenementsComponent } from './evenements/evenements.component';
+
+
 
 
 import { UserLoginComponent } from './User/user-login/user-login.component';
@@ -38,8 +43,14 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { OperationsSurLotComponent } from './operationsSurLot/operationsSurLot.component';
-import { ChangementEtalonnageComponent } from './changement-etalonnage/changement-etalonnage.component';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { InterventionsComponent } from './interventions/interventions.component';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { SaisirEtalonnageComponent } from './saisir-etalonnage/saisir-etalonnage.component';
+import { ChangementComponent } from './changement/changement.component';
+import { ParametrageComponent } from './parametrage/parametrage.component';
+
+
 
 
 
@@ -52,7 +63,15 @@ const appRoutes : Routes=[
   {path:'home',component:HomeComponent},
   {path:'addLot', component:AddLotComponent},
   {path:'listCmpt/:id' , component:ListCompteursComponent},
-  {path:'operations',component:OperationsSurLotComponent}
+  {path:'operations',component:OperationsSurLotComponent},
+  {path:'etalonnage/:id',component:EtalonnageComponent},
+  {path:'evenement/:id',component:EvenementsComponent},
+  {path:'intervention/:id',component:InterventionsComponent},
+  {path: 'changement/:id', component:ChangementComponent},
+  {path: 'saisirETL/:id', component:SaisirEtalonnageComponent},
+  {path: 'saisirETL/:id', component:SaisirEtalonnageComponent},
+  {path: 'Paramétrage', component:ParametrageComponent}
+
 ]
 
 const antDesignIcons = AllIcons as {
@@ -61,7 +80,7 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     UserLoginComponent,
     UserRegisterComponent,
@@ -70,7 +89,12 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
       AddLotComponent,
       ListCompteursComponent,
       OperationsSurLotComponent,
-      ChangementEtalonnageComponent
+      EtalonnageComponent,
+      EvenementsComponent,
+      InterventionsComponent,
+      SaisirEtalonnageComponent,
+      ChangementComponent,
+      ParametrageComponent
    ],
   imports: [
     BrowserModule,
@@ -93,6 +117,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NzSpaceModule,
     NzFormModule,
     NzCardModule,
+    NzRadioModule,
+    NzToolTipModule
 
 
 

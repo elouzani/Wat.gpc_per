@@ -1,0 +1,65 @@
+.lotText{
+  font-size: 22px;
+  font-weight: 350;
+  color: #394b7a;
+  margin: 13px;
+}
+.container{
+  background-color: #fff;
+  padding-top: 1px;
+  border-style: outset;
+
+}
+.critéres{
+  margin-top: 10px;
+  margin-bottom: 13px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #394b7a;
+}
+.col8{
+
+  padding-bottom: 10px;
+}
+input[type=radio], input[type=checkbox] {
+  box-sizing: border-box;
+  padding: 8px;
+}
+.form-check-input:checked {
+  background-color: #3489cc;
+  border-color: #3489cc;
+}
+label{
+  margin-left: 10px;
+  color: #6a757f;
+  font-size: 15px;
+}
+.input1, .input2{
+  margin-left: 8px;
+  width: 50px;
+  border-radius: 8%;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.lancer,.valider{
+  float: right;
+  margin-top: 20px;
+  border-radius: 4%;
+
+}
+.lancer{
+  margin-right: 86px;
+}
+.valider{
+  margin-right: 20px;
+}
+.text{
+  margin-top: 40px;
+  margin-bottom: 20px;
+ font-weight: normal;
+  font-size: 16px;
+  color: #3489cc;
+
+}
+

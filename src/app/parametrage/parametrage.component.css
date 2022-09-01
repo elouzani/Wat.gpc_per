@@ -2,24 +2,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-nz-select{
-  width: 200px;
-}
-.inputs{
-  width: 200px;
-}
-.btn-search{
-  float: left;
-  width: 80px;
-}
-.search-section{
-  margin-bottom: 20px;
-  margin-left: 60px;
-}
-.btn-export{
-  float: right;
-  margin-right: -148px;
-}
 .save {
   margin-right: 8px;
 }
@@ -61,13 +43,6 @@ i.fa-solid.fa-square-xmark{
 i.fa-solid.fa-square-xmark:focus,i.fa-solid.fa-square-xmark:hover{
 color:rgb(180, 30, 30);
 }
-a.toListCmpt{
-  color: #3489cc;
-    text-decoration: underline;
-}
-a.toListCmpt:hover,a.toListCmpt:focus{
-  text-decoration: none;
-}
 .titre{
   font-size: 18px;
   font-weight: 300;
@@ -75,3 +50,8 @@ a.toListCmpt:hover,a.toListCmpt:focus{
 .btn{
   background-color: #fff;
 }
+.search-section{
+  margin-bottom: 26px;
+  margin-left: 60px;
+}
+

@@ -1,0 +1,36 @@
+.export-section{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.btn-export{
+  float: right;
+  margin-right: -148px;
+}
+.titre{
+  font-size: 18px;
+  font-weight: 300;
+}
+.text{
+   margin-top: 20px;
+   margin-bottom: 20px;
+   font-weight: normal;
+   font-size: 16px;
+   color: #3489cc;
+   margin-left: 15px;
+}
+button{
+  border: none;
+}
+i.fa-solid.fa-eye{
+  font-size: 25px;
+  color: #3489cc;
+  margin-left: 54px;
+}
+
+i.fa-solid.fa-eye:focus,i.fa-solid.fa-eye:hover {
+color: #0665ae;
+}
+.interventionBtn{
+  background-color: #fff;
+
+}

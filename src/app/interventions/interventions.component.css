@@ -1,0 +1,16 @@
+.titre{
+  font-size: 18px;
+  font-weight: 300;
+  float:right;
+  margin-inline-end: 50px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.text{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #3489cc;
+  margin-left: 15px;
+}

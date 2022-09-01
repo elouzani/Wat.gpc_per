@@ -18,7 +18,10 @@ nz-select{
 }
 .btn-export{
   float: right;
-  margin-right: -148px;
+  margin-right: 100px;
+}
+ .evenement {
+margin-right: 100px;
 }
 .titre{
   font-size: 18px;

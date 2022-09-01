@@ -1,4 +1,5 @@
 import { Appareil } from "./Appareil";
+import { Evenement } from "./evenement";
 
 export interface Lot {
   iD_LOT_APT: number;
@@ -13,5 +14,6 @@ export interface Lot {
  anneE_LOT_APT  :Date;
  isEdit:boolean;
  appareils: Appareil[];
+ evenenmts: Evenement[];
 
 }

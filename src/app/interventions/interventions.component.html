@@ -1,0 +1,48 @@
+
+<div class="row">
+  <div class="col-12">
+    <p class="titre"> Numéro Evénement: {{NumEvenemt}}</p>
+  </div>
+</div>
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+
+<div class="row">
+  <div class="col-12">
+    <p class="text">Liste Des Evénements</p>
+  </div>
+</div>
+
+<nz-table #sortTable  nzBordered [nzData]="listOfIntervention" nzTableLayout="fixed" id="lots-table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+        {{ column.title }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>
+        {{data.num_inter}}
+      </td>
+      <td>
+        {{data.type_inter}}
+      </td>
+      <td>
+        {{data.nuM_PHY_APT}}
+      </td>
+      <td>
+        {{data.code_etat}}
+      </td>
+      <td>
+        {{data.libelle_etat}}
+      </td>
+      <td>
+        {{data.date_lancement}}
+      </td>
+      <td>
+        {{data.date_execution}}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -122,6 +122,24 @@ fileName= 'ExcelSheet.xlsx';
 
    }
 
+   if(this.numlot ==null && this.nbCmpt != null && this.annee == null && this.selectedMarque != null && this.selectedService == null){
+    for(let i=0;i<=this.listOfLot.length;i++){
+     //console.log("for 1");
+     if(this.listOfLot[i].nB_CMP_LOT !=undefined && this.listOfLot[i].mrQ_LOT_APT !=undefined && this.nbCmpt ==this.listOfLot[i].nB_CMP_LOT &&
+      this.selectedMarque ==this.listOfLot[i].mrQ_LOT_APT){
+         console.log("im inside of", this.listOfLot);
+         this.lotsFiltering.push(this.listOfLot[i]);
+
+         console.log(this.lotsFiltering);
+         this.listOfLot=this.lotsFiltering;
+         console.log(this.lotsFiltering);
+       }
+
+    }
+
+   }
+
+
    if(this.numlot ==null && this.nbCmpt == null && this.annee == null && this.selectedMarque != null && this.selectedService == null){
     for(let i=0;i< this.listOfLot.length;i++){
      //console.log("for 1");
@@ -162,7 +180,20 @@ fileName= 'ExcelSheet.xlsx';
       }
     });
 
-   }if(numlot == '' && nbCmpt == '' && annee != '' && selectedMarque != '' && selectedService != ''){
+   }
+
+   if(numlot == null && nbCmpt == null && annee != null && selectedMarque != null && selectedService ==null){
+    this.listOfLot.forEach(l => {
+      var ann=new Date(l.anneE_LOT_APT)
+      if(ann.getFullYear() == annee && l.mrQ_LOT_APT !=undefined &&
+       this.selectedMarque ==l.mrQ_LOT_APT){
+          this.lotsFiltering.push(l);
+          this.listOfLot=this.lotsFiltering;
+      }
+    });
+
+   }
+   if(numlot == '' && nbCmpt == '' && annee != '' && selectedMarque != '' && selectedService != ''){
     this.listOfLot.forEach(l => {
       if(l.anneE_LOT_APT  == annee && l.mrQ_LOT_APT == selectedMarque && l.svC_LOT_APT == selectedService){
           this.lotsFiltering.push(l);

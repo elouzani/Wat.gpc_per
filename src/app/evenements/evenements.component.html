@@ -1,0 +1,80 @@
+
+ <div nz-row nzJustify="space-between" class="export-section">
+  <div nz-col nzSpan="4" class="titre">Lot de compteurs: {{NumLot}}</div>
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-export"(click)="exportToExcel()">
+      <i nzTooltipTitle="exporter" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-upload"></i>
+    </button>
+  </div>
+
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" class="btn-add" (click)="saisirEtalonnage()">
+      <i nzTooltipTitle="Saisir etalonnage" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-pen"></i>
+    </button>
+  </div>
+</div>
+
+<nz-divider nzOrientation="left" nzText=""></nz-divider>
+<div>
+  <p class="text">Liste Des Evénements</p>
+</div>
+
+
+<nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzData]="listOfEvenement"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzSelections]="listOfSelection"
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>N° Evénement</th>
+          <th>Numéro Lot</th>
+          <th>Type Evénement</th>
+          <th>Date Evénement</th>
+          <th>Nombre Compteur</th>
+          <th>Perte Evénement</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.num_evenmt)" (nzCheckedChange)="onItemChecked(data.num_evenmt , $event)"></td>
+          <td>
+            {{data.num_evenmt}}
+          </td>
+          <td>
+            {{data.num_lot}}
+          </td>
+          <td>
+            {{data.type_evenmt}}
+          </td>
+          <td>
+            {{data.date_evenmt}}
+          </td>
+          <td>
+            {{data.nbr_cmpt}}
+          </td>
+          <td>
+            {{data.perte_evenmt}}
+          </td>
+          <td style="margin-left:60px;">
+            <button class="interventionBtn" [routerLink]="['/intervention',data.num_evenmt]" >
+              <i nzTooltipTitle="Interventions" nzTooltipPlacement="top" nz-button nz-tooltip class="fa-solid fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+
+
+

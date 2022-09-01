@@ -22,6 +22,9 @@ numlot:string;
 nbCmpt:number;
 annee:Date;
 lotsFiltering:Array<Lot>=[];
+requestData: Lot[]=[];
+public idLot : Number;
+
 
   constructor(private lotsService: LotsService,private appareilService:AppareilService, private router:Router) {
 
@@ -39,12 +42,20 @@ lotsFiltering:Array<Lot>=[];
         this.listeOfMarque=marques
       });
 
+      // this.requestData = this.listOfLot.filter(data => this.setOfCheckedId.has(data.iD_LOT_APT));
+      // // this.idLot= this.requestData.map(i => i.iD_LOT_APT);
+      // this.requestData.forEach(element => {
+      //   this.idLot= element.iD_LOT_APT;
+      // });
+      // console.log(this.idLot);
+
 
    }
 
 
 
   ngOnInit() {
+
   }
 
 
@@ -185,6 +196,42 @@ lotsFiltering:Array<Lot>=[];
 
    }
    return this.listOfLot;
+  }
+
+  etalonner(){
+    // this.router.navigate(['etalonnage'],{ queryParams: { id: this.idLot }});
+    this.requestData = this.listOfLot.filter(data => this.setOfCheckedId.has(data.iD_LOT_APT));
+    // this.idLot= this.requestData.map(i => i.iD_LOT_APT);
+    this.requestData.forEach(element => {
+      this.idLot= element.iD_LOT_APT;
+    });
+    console.log(this.idLot);
+    this.router.navigate(['/etalonnage',this.idLot]);
+  }
+
+  changer(){
+    this.requestData = this.listOfLot.filter(data => this.setOfCheckedId.has(data.iD_LOT_APT));
+    // this.idLot= this.requestData.map(i => i.iD_LOT_APT);
+    this.requestData.forEach(element => {
+      this.idLot= element.iD_LOT_APT;
+    });
+    console.log(this.idLot);
+    this.router.navigate(['/changement',this.idLot]);
+  }
+
+  evenements(){
+    this.requestData = this.listOfLot.filter(data => this.setOfCheckedId.has(data.iD_LOT_APT));
+    this.requestData.forEach(element => {
+      this.idLot= element.iD_LOT_APT;
+    });
+    this.router.navigate(['/evenement',this.idLot]);
+
+    // this.lotsService.getLotEvenement(this.idLot).subscribe(
+    //   (data:any) =>{
+    //     console.log();
+    //   }
+    // )
+
   }
 
 

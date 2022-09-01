@@ -1,0 +1,102 @@
+<div class="lotText" nz-col nzSpan="4">Etalonner  {{NumLot}} </div>
+<div class="container">
+
+<div class="critéres">Critére d'Etalonnage</div>
+<div nz-row >
+  <div nz-col nzSpan="8" class="col8">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">Pourcentage %</label>
+      <input type="text" class="input1" [(ngModel)]="radioValue1"/>
+    </div>
+
+    <!-- <nz-radio-group [(ngModel)]="radioValue1">
+      <label nz-radio >Pourcentage %</label>
+      <input type="text" class="input1" [(ngModel)]="radioValue1"/>
+    </nz-radio-group> -->
+
+  </div>
+  <div nz-col nzSpan="8" nzOffset="8" class="col8">
+    <div class="form-check form-check-inline" >
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Nombre de Compteur</label>
+      <input type="text" class="input2" [(ngModel)]="radioValue2"/>
+    </div>
+
+    <!-- <nz-radio-group [(ngModel)]="radioValue2">
+      <label nz-radio >Nombre de Compteur</label>
+      <input type="text" class="input2" [(ngModel)]="radioValue2"/>
+    </nz-radio-group> -->
+
+  </div>
+</div>
+</div>
+
+<!-- <div class="container">
+
+  <div class="critéres">Algorithme d'Etalonnage</div>
+  <div nz-row >
+    <div nz-col nzSpan="8" class="col8">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="option1">
+        <label class="form-check-label" for="inlineRadio1">Trier Par Date De Pose</label>
+
+      </div>
+
+    </div>
+    <div nz-col nzSpan="8" nzOffset="8" class="col8">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Trier Par Identifiant Geographique </label>
+
+      </div>
+    </div>
+  </div>
+  </div> -->
+  <div>
+    <button nz-button nzType="primary" class="lancer" (click)="valider()">
+      Valider La Simulation
+    </button>
+    <button nz-button nzType="primary" class="valider" (click)="lancer(radioValue1,radioValue2)">
+      Lancer La simulation
+    </button>
+  </div>
+
+  <div class="text">
+    Lister Des Compteurs a Etalonner
+  </div>
+
+  <nz-table
+      #rowSelectionTable
+      nzShowSizeChanger
+      [nzData]="listOfAppareilFiltred"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzSelections]="listOfSelection"
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>N° Appareil</th>
+          <th>Diamétre</th>
+          <th>Etat Appareil</th>
+          <th>Date Pose</th>
+          <th>Date Dépose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.nuM_APT)" (nzCheckedChange)="onItemChecked(data.nuM_APT, $event)"></td>
+          <td>{{ data.nuM_PHY_APT}}</td>
+          <td>{{Diametre}}</td>
+          <td>{{ data.etA_APT}}</td>
+          <td>{{ data.daT_POS_APT}}</td>
+          <td>{{ data.daT_DEPO_APT}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+

@@ -49,9 +49,7 @@ export class ListCompteursComponent implements OnInit {
     this.Diametre= data.diA_LOT_APT;
     this.NumLot= data.nuM_LOT_APT;
   }
-
-
-  )})
+ )})
 
    console.log(this.listOfAppareil);
   }
@@ -75,11 +73,10 @@ export class ListCompteursComponent implements OnInit {
 
   affecter(numLot: string){
     const requestData = this.listOfAppareil.filter(data => this.setOfCheckedId.has(data.nuM_APT));
-    console.log(requestData);
+    console.log(requestData, requestData);
     this.lotsService.affecterAppareil(numLot, requestData);
     this.alertify.success("Operation est bien effectue");
-
-     this.ngOnInit();
+    this.ngOnInit();
   }
 
   exportToExcel(){

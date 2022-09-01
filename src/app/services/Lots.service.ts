@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { Appareil } from '../Model/Appareil';
 import { Lot } from '../Model/lot';
+import { Parametrage } from '../Model/parametrage';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,12 @@ getLots(){
 }
 getLotAppareils(id:number){
   return this.http.get(this.baseServerUrl + "Lots/GetLotWithAppareils/" +id);
+}
+getLotEvenements(id:number){
+  return this.http.get(this.baseServerUrl + "Lots/GetLotWithEvenements/" +id);
+}
+getEvenmtInter(id: number){
+  return this.http.get(this.baseServerUrl + "Evenements/GetEvenementWithIntervention/" +id);
 }
 
 getServices(){
@@ -41,6 +48,23 @@ AddLot(lot: Array<Lot>){
     responseType: 'text'
   });
  }
+ AddResultEtl(q : Array<number>,result: number ){
+  return this.http.post(this.baseServerUrl + "ETL_RES/createResEtl" ,{
+    ETL_Q1: q[0],
+    ETL_Q2: q[1],
+    ETL_Q3: q[2],
+    ETL_Q4: q[3],
+    ETL_Q5: q[4],
+    ETL_Q6: q[5],
+    RND_CMPT:result,
+  });
+ }
+
+ AddIntervention(appareils : Array<Appareil>){
+  return this.http.post(this.baseServerUrl+ "Interventions/AddIntervention",appareils,{
+    responseType:'text'
+  });
+ }
 
 updateLot(lot :Lot){
   var id =lot.iD_LOT_APT;
@@ -64,5 +88,12 @@ error => {
 });
 
 }
-
+getParametrage(){
+  return this.http.get(this.baseServerUrl + "Paramétrage/Getparametrages");
 }
+updatePrametrage(parametre: Parametrage){
+  var id =parametre.iD_PAR_VAL;
+  return this.http.put<Parametrage>(this.baseServerUrl + "Paramétrage/" +id,
+  parametre
+   );
+}}
